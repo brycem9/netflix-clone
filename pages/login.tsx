@@ -4,6 +4,9 @@ import Image from "next/image";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+
+
+
 interface Inputs {
   email: string;
   password: string;
@@ -17,13 +20,15 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async (email, password) => {
+  const onSubmit: SubmitHandler<Inputs> = async (formData) => {
+    const { email, password } = formData;
     if (login) {
       await signIn(email, password)
       } else {
         await signUp(email, password)
       }
   };
+  
   return (
     <div
       className="relative flex h-screen w-screen flex-col bg-black md:items-center
