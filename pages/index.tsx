@@ -7,7 +7,8 @@ import Row from "@/components/Row";
 import useAuth from "@/hooks/useAuth";
 import { useRecoilValue } from "recoil";
 import { modalState } from "@/atoms/modalAtom";
-import { Modal } from "@mui/material";
+import  Modal  from "@/components/Modal";
+import Plans from "@/components/PLans";
 
 
 interface Props {
@@ -32,9 +33,12 @@ const Home = ({ netflixOriginals,
    }: Props) => {
     const { loading} = useAuth()
     const  showModal = useRecoilValue(modalState)
+    const   subscription = false
 
 
-    if(loading) return null
+    if(loading || subscription === null) return null
+
+    if(!subscription) return <Plans/>
     
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]" >

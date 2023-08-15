@@ -23,7 +23,6 @@ function Banner({ netflixOriginals }: Props) {
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
     );
   }, [netflixOriginals]);
-  console.log(movie);
   return (
     <div className="flex flex-col space-y-2 py-16 px-8 md:space-y-4 lg:h-[65vh] lg:justify-end lg:pb-12 ">
       <div className="absolute top-0 left-0 -z-10 h-[95vh] w-screen">
@@ -46,7 +45,8 @@ function Banner({ netflixOriginals }: Props) {
           <FaPlay className="h-4 w-4 text-black md:h-7 md:w-7 " />
           Play
         </button>
-        <button className="bannerButton bg-[gray]/70"onClick={() => {
+        <button className="bannerButton bg-[gray]/70"
+        onClick={() => {
             setCurrentMovie(movie)
             setShowModal(true)
           }} >
